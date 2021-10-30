@@ -22,7 +22,7 @@
       "pre-commit": "lint-staged"
     }
   },
-  "lint-staged":{
+  "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
       "standard --fix",
       "git add"
@@ -41,7 +41,7 @@
     ]
   },
   "devDependencies": {
-    "husky": "^7.0.4",
+    "husky": "^4.3.8",
     "lint-staged": "^11.2.6",
     "standard": "^16.0.4"
   }

@@ -1,9 +1,9 @@
-function App() {
-  return (
-    <div className="App">
-      <h1>Hello World</h1>
-    </div>
-  );
-}
+import { Routes } from './Routes'
 
-export default App;
+export function App () {
+  return (
+    <div className='App'>
+      <Routes />
+    </div>
+  )
+}

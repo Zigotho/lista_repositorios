@@ -30,8 +30,10 @@ const useStyles = makeStyles((theme) => ({
     position: 'relative',
     borderRadius: theme.shape.borderRadius,
     backgroundColor: alpha(theme.palette.common.white, 0.15),
+
     '&:hover': {
       backgroundColor: alpha(theme.palette.common.white, 0.25)
+
     },
     marginRight: theme.spacing(2),
     marginLeft: 0,
@@ -39,7 +41,7 @@ const useStyles = makeStyles((theme) => ({
     // definindo o tamanho do input quando a tela for maior que md
     [theme.breakpoints.up('md')]: {
       marginLeft: theme.spacing(3),
-      width: '25%'
+      width: '65ch'
     }
   },
   searchIcon: {
@@ -60,7 +62,7 @@ const useStyles = makeStyles((theme) => ({
     transition: theme.transitions.create('width'),
     width: '100%',
     [theme.breakpoints.up('md')]: {
-      width: '20ch'
+      width: '45ch'
     }
   }
 }))

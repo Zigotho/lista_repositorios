@@ -40,7 +40,14 @@ const colors = {
   Scala: '#c22d40',
   'Jupyter Notebook': '#6A1B9A',
   Clojure: '#db5855',
-  Hack: '#8e8058'
+  Hack: '#8e8058',
+  Kotlin: '#F18E33',
+  Ruby: '#701516',
+  Lua: '#000080',
+  Elixir: '#6e4a7e',
+  HTML: '#e34c26',
+  Dart: '#00B4AB',
+  Cuda: '#6095EB'
 
 }
 

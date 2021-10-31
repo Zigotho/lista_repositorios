@@ -1,4 +1,4 @@
-import { Card, CardContent, Grid } from '@material-ui/core'
+import { Card, CardContent } from '@material-ui/core'
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 // importar icone de estrela material-ui
@@ -29,32 +29,40 @@ const colors = {
   JavaScript: '#f1e05a',
   Python: '#3572A5',
   Php: '#4F5D95',
-  C: '#178600'
+  C: '#178600',
+  'Objective-C': '#438eff',
+  'C++': '#f34b7d',
+  CSS: '#563d7c',
+  'C#': '#178600',
+  TypeScript: '#2b7489',
+  Swift: '#ffac45',
+  PHP: '#4F5D95',
+  Scala: '#c22d40',
+  'Jupyter Notebook': '#6A1B9A',
+  Clojure: '#db5855',
+  Hack: '#8e8058'
+
 }
 
-export function CardRepositorios ({ repositorios }) {
+export function CardRepositorios ({ repo }) {
   const classes = useStyles()
 
   return (
     <div>
-      {repositorios?.map(repositorio => (
-        <Grid key={1} item xs={12}>
-          <Card className={classes.grow}>
-            <CardContent>
-              {/* criando H1 com href */}
-              <a href={repositorio.html_url} target='_blank' rel='noopener noreferrer'> <h1>{repositorio.full_name}</h1> </a>
-              <h4>{repositorio.description}</h4>
-              <div className={classes.separador} style={{ display: 'flex', alignItems: 'center' }}>
-                <StarIcon style={{ color: '#FFD700' }} />
-                <p className={classes.texto}>{repositorio.stargazers_count} </p>
+      <Card className={classes.grow}>
+        <CardContent>
+          <a href={repo.html_url} target='_blank' rel='noopener noreferrer'> <h1>{repo.full_name}</h1> </a>
+          <h4>{repo.description}</h4>
+          <div className={classes.separador} style={{ display: 'flex', alignItems: 'center' }}>
+            <StarIcon style={{ color: '#FFD700' }} />
+            <p className={classes.texto}>{repo.stargazers_count} </p>
 
-                <p className={classes.corLinguagem} style={{ backgroundColor: colors[repositorio.language] }} />
-                <p className={classes.texto}>{repositorio.language}</p>
+            <p className={classes.corLinguagem} style={{ backgroundColor: colors[repo.language] }} />
+            <p className={classes.texto}>{repo.language}</p>
 
-              </div>
-            </CardContent>
-          </Card>
-        </Grid>))}
+          </div>
+        </CardContent>
+      </Card>
     </div>
 
   )

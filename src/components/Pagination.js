@@ -5,8 +5,12 @@ const useStyles = makeStyles((theme) => ({
   // definindo o Ul em linha e sem ponto
   root: {
     '& > *': {
-      margin: theme.spacing(1),
-      width: theme.spacing(16)
+      // margin: theme.spacing(1),
+      // alinhando os filhos ao centro
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      padding: theme.spacing(1)
     }
   },
   grow: {
@@ -20,7 +24,6 @@ const useStyles = makeStyles((theme) => ({
   li: {
     display: 'inline',
     listStyle: 'none',
-    // colocando espaço entre eles
     '&:not(:last-child)': {
       marginRight: '2em'
     }
@@ -35,7 +38,6 @@ const useStyles = makeStyles((theme) => ({
 
 function Pagination ({ maxPages, page, setPage }) {
   const classes = useStyles()
-
   function nextPage () {
     console.log('nextPage')
     if (page < maxPages) {
@@ -59,9 +61,11 @@ function Pagination ({ maxPages, page, setPage }) {
       <ul className={classes.ul}>
         <li onClick={prevPage} className={classes.li}><a className={classes.a}>Voltar</a></li>
 
-        {Array(maxPages).fill(0, page - 2 <= 0 ? 0 : page - 3, page + 2).map((_, index) => (
-          <li onClick={() => setPageNumber(index + 1)} className={classes.li} key={index}><a className={classes.a} href={index + 1 === page ? '#' : null}>{index + 1}</a></li>
-        ))}
+        {maxPages > 0
+          ? Array(maxPages)?.fill(0, page - 2 <= 0 ? 0 : page - 3, page + 2)?.map((_, index) => (
+            <li onClick={() => setPageNumber(index + 1)} className={classes.li} key={index}><a className={classes.a} href={index + 1 === page ? '#' : null}>{index + 1}</a></li>
+            ))
+          : null}
         <li onClick={nextPage} className={classes.li}><a className={classes.a}>Próxima</a></li>
       </ul>
 

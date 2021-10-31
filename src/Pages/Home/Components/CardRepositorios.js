@@ -47,7 +47,8 @@ const colors = {
   Elixir: '#6e4a7e',
   HTML: '#e34c26',
   Dart: '#00B4AB',
-  Cuda: '#6095EB'
+  Cuda: '#6095EB',
+  JavaFX: '#e34c26'
 
 }
 
@@ -63,7 +64,6 @@ export function CardRepositorios ({ repo }) {
           <div className={classes.separador} style={{ display: 'flex', alignItems: 'center' }}>
             <StarIcon style={{ color: '#FFD700' }} />
             <p className={classes.texto}>{repo.stargazers_count} </p>
-
             <p className={classes.corLinguagem} style={{ backgroundColor: colors[repo.language] }} />
             <p className={classes.texto}>{repo.language}</p>
 

@@ -40,6 +40,7 @@ const useStyles = makeStyles((theme) => ({
 
 }))
 
+// array responsavel por armazenar as cores das linguagens
 const colors = {
   Go: '#00ADB5',
   Java: '#b07219',
@@ -70,6 +71,7 @@ const colors = {
 
 }
 
+// função responsavel por renderizar o card de repositorios
 export function CardRepositorios ({ repo }) {
   const classes = useStyles()
 

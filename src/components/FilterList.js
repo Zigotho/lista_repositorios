@@ -19,6 +19,7 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
+// Array responsável por filtrar a linguagens
 const languagesFilter = [
   {
     name: 'JavaScript',
@@ -48,6 +49,7 @@ const languagesFilter = [
   }
 ]
 
+// função responsável por renderizar o filtro
 function FilterList ({ setPage, setSearch, handleSearch, search, languages, setLanguages }) {
   const classes = useStyles()
   return (

@@ -17,14 +17,18 @@ export function Home () {
   const [languages, setLanguages] = useState([])
   const [loading, setLoading] = useState(false)
 
+  // função reponsalvel por fazer a busca dos repositorios
   function handleSearch () {
     setLoading(true)
+    // faz o replace de espaços em branco por + para que a busca seja feita como um termo
     let searchString = search.replace(/\s/g, '+')
     setSearched(searchString)
+    // faz um map no useState Language para pegar as linguagens selecionadas
     languages.map(language => {
       searchString += `+language:${language}`
       return searchString
     })
+    // consulta a api do GitHub e armazena seus valores em useStates
     api.get(`repositories?q=${searchString}&order=desc&per_page=50&page=${page}`).then(res => {
       setRepositorios(res.data.items)
       setTotal(Math.ceil(res.data.total_count / res.data.items.length))
@@ -36,6 +40,7 @@ export function Home () {
     })
   }
 
+  // useEffect responsavel por escutar os states: page e languages e atualizar os repositorios
   useEffect(() => {
     handleSearch(search)
   }, [page, languages])
@@ -47,6 +52,7 @@ export function Home () {
         <Grid item xs={12} md={3}>
           <FilterList languages={languages} setLanguages={setLanguages} setPage={setPage} setSearch={setSearch} handleSearch={handleSearch} search={search} />
         </Grid>
+        {/* condição que verifica se a tela esta carregando */}
         {loading
           ? (
             <Grid item xs={12} md={9}>

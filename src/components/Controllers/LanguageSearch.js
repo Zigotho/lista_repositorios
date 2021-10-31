@@ -21,6 +21,7 @@ const useStyle = makeStyles(theme => ({
 
 }))
 
+// funcao que retorna um componente das linguagens
 export function LanguageSearch ({ languagesFilter, setPage, languages, setLanguages }) {
   const classes = useStyle()
 
@@ -38,6 +39,7 @@ export function LanguageSearch ({ languagesFilter, setPage, languages, setLangua
   }
   return (
     <div>
+      {/* Map responsavel por fazer a lista das linguagens  */}
       {languagesFilter.map((language, index) => (
         <div key={index}>
           <Divider component='div' />

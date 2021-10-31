@@ -5,8 +5,6 @@ const useStyles = makeStyles((theme) => ({
   // definindo o Ul em linha e sem ponto
   root: {
     '& > *': {
-      // margin: theme.spacing(1),
-      // alinhando os filhos ao centro
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
@@ -15,11 +13,6 @@ const useStyles = makeStyles((theme) => ({
   },
   grow: {
     flexGrow: 1
-  },
-  ul: {
-    padding: '0px',
-    marginTop: '2em',
-    listStyle: 'none'
   },
   li: {
     display: 'inline',

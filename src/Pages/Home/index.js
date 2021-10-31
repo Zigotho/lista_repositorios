@@ -1,31 +1,35 @@
 import { Grid } from '@material-ui/core'
-import React from 'react'
+import React, { useState } from 'react'
 import Menubar from '../../components/MenuBar'
 import api from '../../service/api'
 import { CardRepositorios } from './Components/CardRepositorios'
 
 export function Home () {
-  const [repositorios, setRepositorios] = React.useState([])
-  function handleClick () {
-    console.log('clicked')
-    api.get('repositories?q=facebook&sort=stars&order=desc&per_page=50&page=2').then(res => {
-      console.log(res.data)
+  const [repositorios, setRepositorios] = useState([])
+  const [search, setSearch] = useState('')
+
+  function handleClick (string, language) {
+    console.log(search)
+    api.get(`repositories?q=${search}&order=desc&per_page=50&page=1`).then(res => {
       setRepositorios(res.data.items)
+      console.log(res.data)
     })
   }
   return (
     <div>
-      <Menubar />
+      <Menubar search={search} setSearch={setSearch} />
       <Grid container spacing={3}>
         <Grid item xs={12} md={3}>
           <h1>Home</h1>
-          <button onClick={handleClick}>Click</button>
+          <button onClick={() => handleClick('facebook', 'Python')}>Click</button>
         </Grid>
         <Grid item xs={12} md={9}>
-          <Grid container direction='column' spacing={3}>
-            <Grid item xs={12}>
-              <CardRepositorios repositorios={repositorios} />
-            </Grid>
+          <Grid container direction='column' spacing={2}>
+            {repositorios.map(repo => (
+              <Grid item xs={12} key={repo.id}>
+                <CardRepositorios repo={repo} />
+              </Grid>
+            ))}
           </Grid>
         </Grid>
       </Grid>

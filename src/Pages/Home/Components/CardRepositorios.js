@@ -7,7 +7,10 @@ import StarIcon from '@material-ui/icons/Star'
 const useStyles = makeStyles((theme) => ({
   // Definindo o estilo do menu
   grow: {
-    marginTop: theme.spacing(2)
+    flexGrow: 1,
+    position: 'relative',
+    marginTop: theme.spacing(2),
+    minHeight: '40vh'
   },
   corLinguagem: {
     width: '1em',
@@ -16,11 +19,25 @@ const useStyles = makeStyles((theme) => ({
   },
   separador: {
     margin: theme.spacing(1, 0),
+    position: 'absolute',
+    bottom: 0,
     '& > *': {
       marginRight: theme.spacing(0.6)
     }
   },
-  texto: { marginRight: theme.spacing(6) }
+  texto: { marginRight: theme.spacing(6) },
+  title: {
+    fontSize: '1.4em',
+    fontWeight: 'bold'
+  },
+  link: {
+    textDecoration: 'none'
+  },
+  description: {
+    fontSize: '1em',
+    color: '#666'
+  }
+
 }))
 
 const colors = {
@@ -48,7 +65,8 @@ const colors = {
   HTML: '#e34c26',
   Dart: '#00B4AB',
   Cuda: '#6095EB',
-  JavaFX: '#e34c26'
+  JavaFX: '#e34c26',
+  'C++/CLI': '#f34b7d'
 
 }
 
@@ -59,8 +77,8 @@ export function CardRepositorios ({ repo }) {
     <div>
       <Card className={classes.grow}>
         <CardContent>
-          <a href={repo.html_url} target='_blank' rel='noopener noreferrer'> <h1>{repo.full_name}</h1> </a>
-          <h4>{repo.description}</h4>
+          <a className={classes.link} href={repo.html_url} target='_blank' rel='noopener noreferrer'> <h2 className={classes.title}>{repo.full_name}</h2> </a>
+          <h3 className={classes.description}>{repo.description}</h3>
           <div className={classes.separador} style={{ display: 'flex', alignItems: 'center' }}>
             <StarIcon style={{ color: '#FFD700' }} />
             <p className={classes.texto}>{repo.stargazers_count} </p>

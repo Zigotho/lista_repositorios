@@ -9,10 +9,9 @@ export function Home () {
   const [search, setSearch] = useState('')
 
   function handleClick (string, language) {
-    console.log(search)
-    api.get(`repositories?q=${search}&order=desc&per_page=50&page=1`).then(res => {
+    const searchString = search.replace(/\s/g, '+')
+    api.get(`repositories?q=${searchString}&order=desc&per_page=50&page=1`).then(res => {
       setRepositorios(res.data.items)
-      console.log(res.data)
     })
   }
   return (

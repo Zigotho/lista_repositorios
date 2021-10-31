@@ -65,7 +65,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
-export default function PrimarySearchAppBar () {
+export default function PrimarySearchAppBar ({ search, setSearch }) {
   const classes = useStyles()
   const [anchorEl, setAnchorEl] = React.useState(null)
 
@@ -120,6 +120,7 @@ export default function PrimarySearchAppBar () {
                 root: classes.inputRoot,
                 input: classes.inputInput
               }}
+              onChange={(e) => setSearch(e.target.value)}
               inputProps={{ 'aria-label': 'search' }}
             />
           </div>

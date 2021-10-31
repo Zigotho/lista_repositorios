@@ -67,7 +67,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
-export default function PrimarySearchAppBar ({ search, setSearch }) {
+export default function PrimarySearchAppBar ({ setPage, setSearch, handleSearch }) {
   const classes = useStyles()
   const [anchorEl, setAnchorEl] = React.useState(null)
 
@@ -121,6 +121,12 @@ export default function PrimarySearchAppBar ({ search, setSearch }) {
               classes={{
                 root: classes.inputRoot,
                 input: classes.inputInput
+              }}
+              onKeyUp={(e) => {
+                if (e.key === 'Enter') {
+                  handleSearch()
+                  setPage(1)
+                }
               }}
               onChange={(e) => setSearch(e.target.value)}
               inputProps={{ 'aria-label': 'search' }}
